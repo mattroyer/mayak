@@ -24,3 +24,5 @@ The previous block of code will add the keys in the hash as directories to your 
 ## Motivation
 
 This started out as a way to clean up my desktop quickly. But as I worked with the files and structure, I found it was useful for other directories as well.
+
+###### P.S. маяк means lighthouse in Russian
