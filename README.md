@@ -1,7 +1,7 @@
 Mayak (маяк)
 ============
 
-##### Shine some light on your system. Make it easier to navigate.
+##### Shine some light on your system. Make it cleaner to navigate.
 
 **Goal**: Automate the cleanup of your folders. Create directories and easily move files to them.
 
