@@ -29,8 +29,3 @@ class Mayak
     end
   end
 end
-
-base = "#{ENV['USERPROFILE']}/Desktop"
-directories_and_files = {:Images => ['jpg', 'jpeg', 'png', 'gif'], :PDFs => ['pdf'], :Spreadsheets => ['xls', 'xlsx'], :Sites => ['url', 'html', 'htm'], :Docs => ['txt', 'doc', 'docx', 'rtf']}
-
-Mayak.new base, directories_and_files
