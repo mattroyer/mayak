@@ -3,7 +3,7 @@ Mayak (маяк)
 
 ##### Shine some light on your system. Make it easier to navigate.
 
-Automate the cleanup of your folders. Create directories and easily move files to them.
+**Goal**: Automate the cleanup of your folders. Create directories and easily move files to them.
 
 > Example:
 
