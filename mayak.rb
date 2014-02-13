@@ -16,7 +16,7 @@ class Mayak
     end
 
     @directories_and_files.each do |dir, types|
-      files = @current_dir.select { |f| f.match /#{types.join('|')}/i }
+      files = @current_dir.select { |f| f.match /\.(#{types.join('|')})$/i }
       create.call "#{@base_directory}/#{dir}"
 
       move = Proc.new do |arr|
