@@ -2,30 +2,43 @@ require 'fileutils'
 
 class Mayak
 
-  def initialize(base_directory, directories_and_files)
-    @base_directory = base_directory
-    @directories_and_files = directories_and_files
-    @current_dir = Dir.entries("#{@base_directory}").select { |file| File.file?("#{@base_directory}/#{file}") }
+  def initialize(to_directory)
+    @to_directory = to_directory
 
-    move_files
+    cleanup_directories.each do |dir|
+      move_files dir
+    end
   end
 
-  def move_files
-    create = Proc.new do |dir|
-      FileUtils.mkdir_p(dir)
-    end
+  def cleanup_directories
+    ["#{ENV['USERPROFILE']}/Desktop", "#{ENV['USERPROFILE']}/Downloads"]
+  end
 
-    @directories_and_files.each do |dir, types|
-      files = @current_dir.select { |f| f.match /\.(#{types.join('|')})$/i }
-      create.call "#{@base_directory}/#{dir}"
+  def dictionary
+    {
+      Images: ['jpg', 'jpeg', 'png', 'gif', 'svg'],
+      Spreadsheets: ['xls', 'xlsx'],
+      Docs: ['txt', 'doc', 'docx', 'rtf'],
+      Sites: ['url', 'html', 'htm'],
+      PDFs: ['pdf']
+    }
+  end
 
-      move = Proc.new do |arr|
-        arr.each do |element|
-          FileUtils.mv("#{@base_directory}/#{element}", "#{@base_directory}/#{dir}/#{element}")
-        end
+  def create_directory directory
+    FileUtils.mkdir_p directory
+  end
+
+  def move_files current_dir
+    dictionary.each do |dir, types|
+      files = Dir.entries(current_dir).select { |f| f.match /\.(#{types.join('|')})$/i }
+
+      files.each do |file|
+        create_directory "#{@to_directory}/#{dir}"
+        FileUtils.mv("#{current_dir}/#{file}", "#{@to_directory}/#{dir}/#{file}")
       end
 
-      move.call files
     end
   end
 end
+
+Mayak.new "#{ENV['USERPROFILE']}/Documents"
