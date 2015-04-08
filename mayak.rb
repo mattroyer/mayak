@@ -40,5 +40,3 @@ class Mayak
     end
   end
 end
-
-Mayak.new "#{ENV['USERPROFILE']}/Documents"

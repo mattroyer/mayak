@@ -8,13 +8,10 @@ Mayak (маяк)
 > Example:
 
 ```
-base = "#{ENV['USERPROFILE']}/Desktop"
-directories_and_files = {:Images => ['jpg', 'jpeg', 'png', 'gif'], :PDFs => ['pdf'], :Spreadsheets => ['xls', 'xlsx'], :Sites => ['url', 'html', 'htm'], :Docs => ['txt', 'doc', 'docx', 'rtf']}
-
-Mayak.new base, directories_and_files
+Mayak.new "#{ENV['USERPROFILE']}/Documents"
 ```
 
-The above block of code will add the keys in the hash as directories to your base directory. It will then look at what types of file extensions that folder requires and will move the files in your base directory to their corresponding directory.
+The above code above will take files from the directories stored in the `cleanup_directories` method and use the extensions and folders held in the `dictionary` method to filter the files into their proper folders in the directory of your choosing. Above, the `Documents` folder of the user's directory is used.
 
 ## Tasks
   - Implement JSON config file with accompanying code which holds the information for base_directory, file_directories, and files
